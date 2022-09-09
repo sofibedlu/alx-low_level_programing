@@ -7,7 +7,7 @@
  */
 int main(void)
 {
-        char charType;
+char charType;
 
 	int intType;
 
@@ -17,8 +17,7 @@ int main(void)
 
 	float floatType;
 
-        printf("Size of a char: %zu byte(s)\n", sizeof(charType));
-	
+printf("Size of a char: %zu byte(s)\n", sizeof(charType));	
         printf("Size of an int: %zu byte(s)\n", sizeof(intType));
 
 	printf("Size of a long int: %zu byte(s)\n", sizeof(longIntType));
