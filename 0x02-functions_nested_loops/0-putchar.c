@@ -4,7 +4,6 @@
 /**
  * main - entry point
  *
- * @ch: string to be printed
  *
  * Return: always 0
  */
