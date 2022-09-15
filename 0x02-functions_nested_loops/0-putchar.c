@@ -2,18 +2,21 @@
 #include "main.h"
 
 /**
- * printstring - print a string
+ * main - entry point
  *
  * @ch: string to be printed
  *
- * Return: \"_putchar\"
+ * Return: always 0
  */
-void printstring(char *ch)
+int main(void)
 {
+	char *ch = "_putchar";
+
 	while (*ch != '\0')
 	{
 		_putchar(*ch);
 		ch++;
 	}
+	_putchar('\n');
+	return (0);
 }
-
