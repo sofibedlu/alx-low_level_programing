@@ -3,7 +3,9 @@
 /**
  * _islower - check for small letters
  *
- * Retun: 1 if c is lowercase otherwise o
+ * @c character to be checked
+ *
+ * Return: 1 if c is lowercase otherwise o
  */
 int _islower(int c)
 {	
@@ -11,5 +13,6 @@ int _islower(int c)
 	{
 		return (1);
 	}
-	else return (0);
+	else
+		return (0);
 }
