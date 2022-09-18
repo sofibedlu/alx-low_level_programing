@@ -27,7 +27,14 @@ int main(void)
 		}
 		else if (i == (i5 * 5))
 		{
-			printf("Buzz ");
+			if (i == 100)
+			{
+				printf("Buzz");
+			}
+			else
+			{
+				printf("Buzz ");
+			}
 		}
 		else
 		{
