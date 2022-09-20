@@ -16,7 +16,6 @@ void print_array(int *a, int n)
 	{
 		while (i < n)
 		{
-	
 			printf("%d", *a);
 			if ((a + i) == (a + (n - 1)))
 			{
@@ -26,8 +25,7 @@ void print_array(int *a, int n)
 			else
 				printf(", ");
 			a++;
-			i++;
-	
+			i++
 		}
 	}
 	else
