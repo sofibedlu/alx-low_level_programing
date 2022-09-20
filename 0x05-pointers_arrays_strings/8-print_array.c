@@ -12,19 +12,24 @@ void print_array(int *a, int n)
 {
 	int i = 0;
 
-	while (i < n)
+	if (n > 0)
 	{
-
-		printf("%d", *a);
-		if ((a + i) == (a + (n - 1)))
+		while (i < n)
 		{
-			printf("\n");
-			break;
+	
+			printf("%d", *a);
+			if ((a + i) == (a + (n - 1)))
+			{
+				printf("\n");
+				break;
+			}
+			else
+				printf(", ");
+			a++;
+			i++;
+	
 		}
-		else
-			printf(", ");
-		a++;
-		i++;
-
 	}
+	else
+		printf("\n");
 }
