@@ -9,13 +9,12 @@
 
 char *string_toupper(char *s)
 {
-	int i, j;
+	int i;
 
 	for (i = 0; s[i] != '\0'; i++)
-	for (j = 0; j < i; j++)
 	{
-		if ('a' <= s[j] && s[j] <= 'z')
-			s[j] = s[j] - 32;
+		if (s[i] >= 'a' && s[i] <= 'z')
+			s[i] = s[i] - 32;
 	}
 	return (s);
 }
