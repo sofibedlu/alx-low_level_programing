@@ -12,9 +12,11 @@
 
 char *_strpbrk(char *s, char *accept)
 {
-	int i, j;
+	int i, j, n = 0;
 
 	for (i = 0; s[i] != '\0'; i++)
+		n++;
+	for (i = 0; i <= n; i++)
 	{
 		bool match_found = false;
 
