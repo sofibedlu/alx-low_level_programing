@@ -22,13 +22,12 @@ unsigned int _strspn(char *s, char *accept)
 			if (accept[j] == s[i])
 			{
 				match_found = true;
+				num++;
 				break;
 			}
 		}
 		if (!match_found)
 			break;
-		else
-			num++;
 	}
 	return (num);
 }
