@@ -12,11 +12,9 @@
 
 char *_strpbrk(char *s, char *accept)
 {
-	int i, j, n = 0;
+	int i, j;
 
 	for (i = 0; s[i] != '\0'; i++)
-		n++;
-	for (i = 0; i <= n; i++)
 	{
 		bool match_found = false;
 
@@ -31,6 +29,7 @@ char *_strpbrk(char *s, char *accept)
 		s++;
 		if (match_found)
 			return (s);
+
 	}
 	return (NULL);
 }
