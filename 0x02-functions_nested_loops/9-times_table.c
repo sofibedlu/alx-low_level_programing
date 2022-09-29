@@ -20,19 +20,18 @@ void times_table(void)
 				_putchar(' ');
 			}
 			if (y == 0)
-			{
-				_putchar('0');
-			}
-			else if (product >= 10)
-			{
-				_putchar((product / 10) + '0');
-				_putchar((product % 10) + '0');
-			}
-			else if ((product < 10) && (y != 0))
+				_putchar(0 + '0');
+			if (product < 10 && y != 0)
 			{
 				_putchar(' ');
-				_putchar((product % 10) + '0');
+				_putchar(product + '0');
 			}
+			if (product > 9)
+			{
+				_putchar(product / 10 + '0');
+				_putchar(product % 10 + '0');
+			}
+
 		}
 		_putchar('\n');
 	}
