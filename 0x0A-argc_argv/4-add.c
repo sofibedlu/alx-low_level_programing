@@ -13,9 +13,9 @@ int checkint(const char *s)
 	for (i = 0; s[i] != '\0'; i++)
 	{
 		if (s[i] <= '0' || s[i] >= '9')
-			return (0);
+			return (1);
 	}
-	return (1);
+	return (0);
 }
 /**
  * main - add positive integers
@@ -31,9 +31,9 @@ int main(int argc, char *argv[])
 		printf("%d\n", 0);
 	if (argc > 1)
 	{
-		for (i = 0; i < argc; i++)
+		for (i = 1; i < argc; i++)
 		{
-			if (!(checkint(argv[i])))
+			if (checkint(argv[i]))
 			{
 				printf("%s\n", "Error");
 				return (1);
