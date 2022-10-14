@@ -37,7 +37,9 @@ void printString(va_list args)
 {
 	char *s = va_arg(args, char *);
 
-	s == NULL ? printf("(nil)") : printf("%s", s);
+	if (s == NULL)
+		printf("%s", "(nil)");
+	printf("%s", s);
 }
 
 /**
@@ -56,8 +58,7 @@ void print_all(const char * const format, ...)
 		{"i", printInt},
 		{"c", printChar},
 		{"f", printFloat},
-		{"s", printString},
-		{NULL, NULL}
+		{"s", printString}
 	};
 	va_start(args, format);
 
@@ -66,7 +67,7 @@ void print_all(const char * const format, ...)
 		j = 0;
 		while (j < 4)
 		{
-			if (format[i] == *array[j].data_type)
+			if (format[i] == array[j].data_type[0])
 			{
 				printf("%s", sep);
 				array[j].fun_type(args);
