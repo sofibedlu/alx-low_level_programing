@@ -36,7 +36,7 @@ void printFloat(va_list args)
 void printString(va_list args)
 {
 	char *s = va_arg(args, char *);
-	
+
 	s == NULL ? printf("%s", "(nil)") : printf("%s", s);
 }
 
