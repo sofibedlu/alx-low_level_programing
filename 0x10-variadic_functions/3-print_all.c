@@ -56,7 +56,8 @@ void print_all(const char * const format, ...)
 		{"i", printInt},
 		{"c", printChar},
 		{"f", printFloat},
-		{"s", printString}
+		{"s", printString},
+		{NULL,NULL}
 	};
 	va_start(args, format);
 
