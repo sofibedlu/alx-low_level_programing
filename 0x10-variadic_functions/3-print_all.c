@@ -66,7 +66,7 @@ void print_all(const char * const format, ...)
 		j = 0;
 		while (j < 4)
 		{
-			if (format[i] == array[j].data_type[0])
+			if (format[i] == *array[j].data_type)
 			{
 				printf("%s", sep);
 				array[j].fun_type(args);
