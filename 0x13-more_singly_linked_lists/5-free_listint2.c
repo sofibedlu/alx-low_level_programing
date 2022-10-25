@@ -18,5 +18,5 @@ void free_listint2(listint_t **head)
 		cnode = cnode->next;
 		free(temp);
 	}
-	head = NULL;
+	*head = NULL;
 }
