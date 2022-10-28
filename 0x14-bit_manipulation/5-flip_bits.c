@@ -11,11 +11,10 @@
  */
 unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
-	int sum = 0, c;
+	int shift = (sizeof(n) * BYTE_LENGTH);
+	int dist = 0;
 
-	for (c = n ^ m; c != 0; c = c & (c - 1))
-	{
-		sum++;
-	}
-	return (sum);
+	while (shift--)
+		dist += (n >> shift & 1) != (m >> shift & 1);
+	return (dist);
 }
