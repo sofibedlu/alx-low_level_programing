@@ -11,14 +11,11 @@
  */
 unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
-	unsigned int sum = 0, c;
-	int bits = (sizeof(n) * BYTE_LENGTH);
+	int sum = 0, c;
 
-	c = n ^ m;
-	while (bits--)
+	for (c = n ^ m; c != 0; c = c & (c - 1))
 	{
-		sum = sum + (c & 1);
-		c = c >> 1;
+		sum++;
 	}
 	return (sum);
 }
