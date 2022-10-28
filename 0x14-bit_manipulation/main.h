@@ -4,7 +4,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <math.h>
-#define BYTE_LENGHT 8
+#define BYTE_LENGTH 8
 
 unsigned int flip_bits(unsigned long int n, unsigned long int m);
 int clear_bit(unsigned long int *n, unsigned int index);
