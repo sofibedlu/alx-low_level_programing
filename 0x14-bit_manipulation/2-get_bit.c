@@ -20,6 +20,8 @@ int get_bit(unsigned long int n, unsigned int index)
 		i++;
 	}
 	i--;
+	if (index1 > i)
+		return (-1);
 	for (; i >= 0; i--)
 	{
 		bit = (num >> i) & 1;
