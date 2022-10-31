@@ -21,11 +21,12 @@ int create_file(const char *filename, char *text_content)
 	if (buffer == NULL)
 		return (-1);
 	strcpy(buffer, text_content);
-	if (text_content == NULL)
-		buffer = "";
-	w = write(fd, buffer, strlen(buffer) + 1);
-	if (w == -1)
-		return (-1);
+	if (text_content != NULL)
+	{
+		w = write(fd, buffer, strlen(buffer) + 1);
+		if (w == -1)
+			return (-1);
+	}
 	close(fd);
 	free(buffer);
 	return (1);
