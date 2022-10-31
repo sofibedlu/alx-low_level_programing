@@ -10,19 +10,23 @@ int create_file(const char *filename, char *text_content)
 {
 	int fd;
 	char *buffer;
+	ssize_t w;
 
 	if (filename == NULL)
 		return (-1);
-	fd = open(filename, O_CREAT | O_WRONLY, 00600);
+	fd = open(filename, O_CREAT | O_WRONLY | O_TRUNC, S_IRUSR | S_IWUSR);
 	if (fd == -1)
 		return (-1);
 	buffer = malloc(strlen(text_content) + 1);
 	if (buffer == NULL)
-		return (0);
+		return (-1);
 	strcpy(buffer, text_content);
 	if (text_content == NULL)
 		buffer = "";
-	write(fd, buffer, strlen(buffer) + 1);
+	w = write(fd, buffer, strlen(buffer) + 1);
+	if (w == -1)
+		return (-1);
 	close(fd);
+	free(buffer);
 	return (1);
 }
