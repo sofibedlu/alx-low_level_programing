@@ -1,52 +1,61 @@
 #include "main.h"
-#include <stdio.h>
 
-#define MAXSIZE 1204
-#define SE STDERR_FILENO
-
+void cp_file(char *file_from, char *file_to);
 /**
- * main - create the copy bash script
- * @ac: argument count
- * @av: arguments as strings
- * Return: 0
+ * main - check-code
+ * @argc: number of argument
+ * @argv: array of argument
+ * Return: 0 (always success)
  */
-int main(int ac, char *av[])
+int main(int argc, char **argv)
 {
-	int input_fd, output_fd, istatus, ostatus;
-	char buf[MAXSIZE];
+
+	if (argc != 3)
+	{
+		dprintf(2, "Usage: %s file_from file_to\n", argv[0]);
+		exit(97);
+	}
+	cp_file(argv[1], argv[2]);
+	return (0);
+}
+
+void cp_file(char *file_from, char *file_to)
+{
+	int fdr, fdw;
+	int r, w;
+	char buffer[1024];
 	mode_t mode;
 
 	mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
-	if (ac != 3)
-		dprintf(SE, "Usage: cp file_from file_to\n"), exit(97);
-	input_fd = open(av[1], O_RDONLY);
-	if (input_fd == -1)
-		dprintf(SE, "Error: Can't read from file %s\n", av[1]), exit(98);
-	output_fd = open(av[2], O_CREAT | O_WRONLY | O_TRUNC, mode);
-	if (output_fd == -1)
-		dprintf(SE, "Error: Can't write to %s\n", av[2]), exit(99);
+	fdr = open(file_from, O_RDONLY);
+	if (fdr == -1)
+		dprintf(2, "Error: Can't read from file %s\n", file_from), exit(98);
+	fdw = open(file_to, O_CREAT | O_TRUNC | O_WRONLY, mode);
+	if (fdw == -1)
+		dprintf(2, "Error: Can't write to %s\n", file_to), exit(99);
+	r = read(fdr, buffer, 1024);
+	if (r == -1)
+	{
+		dprintf(2, "Error: Can't read from file %s\n", file_from);
+		exit(98);
+	}
+	if (r > 0)
+	{
+		w = write(fdw, buffer, (ssize_t) r);
+		if (w == -1)
+			dprintf(2, "Error: Can't write to %s\n", file_to), exit(99);
+	}
 
-	do {
-		istatus = read(input_fd, buf, MAXSIZE);
-		if (istatus == -1)
-		{
-			dprintf(SE, "Error: Can't read from file %s\n", av[1]);
-			exit(98);
-		}
-		if (istatus > 0)
-		{
-			ostatus = write(output_fd, buf, (ssize_t) istatus);
-			if (ostatus == -1)
-				dprintf(SE, "Error: Can't write to %s\n", av[2]), exit(99);
-		}
-	} while (istatus > 0);
-
-	istatus = close(input_fd);
-	if (istatus == -1)
-		dprintf(SE, "Error: Can't close fd %d\n", input_fd), exit(100);
-	ostatus = close(output_fd);
-	if (ostatus == -1)
-		dprintf(SE, "Error: Can't close fd %d\n", output_fd), exit(100);
-
-	return (0);
+	r = close(fdr);
+	if (r == -1)
+	{
+		dprintf(2, "Error: Can't close fd %d", fdr);
+		exit(100);
+	}
+	w = close(fdw);
+	if (w == -1)
+	{
+		dprintf(2, "Error: Can't close fd %d", fdr);
+		exit(100);
+	}
 }
