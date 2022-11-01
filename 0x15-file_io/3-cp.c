@@ -1,6 +1,6 @@
 #include "main.h"
 #define ER STDERR_FILENO
-#define MAX 1204
+#define MAX 1024
 /**
  * main - check-code
  * @argc: number of argument
@@ -15,7 +15,7 @@ int main(int argc, char **argv)
 	mode_t mode;
 
 	if (argc != 3)
-		dprintf(2, "Usage: %s file_from file_to\n", argv[0]), exit(97);
+		dprintf(ER, "Usage: %s file_from file_to\n", argv[0]), exit(97);
 	mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
 	fdr = open(argv[1], O_RDONLY);
 	if (fdr == -1)
