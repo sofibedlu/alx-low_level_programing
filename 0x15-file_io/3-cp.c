@@ -1,6 +1,6 @@
 #include "main.h"
 #define ER STDERR_FILENO
-#define MAX 1024
+#define MAX 1204
 /**
  * main - check-code
  * @argc: number of argument
