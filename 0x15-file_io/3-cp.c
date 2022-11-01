@@ -15,7 +15,7 @@ int main(int argc, char **argv)
 	mode_t mode;
 
 	if (argc != 3)
-		dprintf(ER, "Usage: %s file_from file_to\n", argv[0]), exit(97);
+		dprintf(ER, "Usage: cp file_from file_to\n"), exit(97);
 	mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
 	fdr = open(argv[1], O_RDONLY);
 	if (fdr == -1)
