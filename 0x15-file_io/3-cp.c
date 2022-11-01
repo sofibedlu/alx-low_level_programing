@@ -1,6 +1,6 @@
 #include "main.h"
 #define ER STDERR_FILENO
-
+#define MAX 1024
 /**
  * main - check-code
  * @argc: number of argument
@@ -11,7 +11,7 @@ int main(int argc, char **argv)
 {
 	int fdr, fdw;
 	int r, w;
-	char buffer[1024];
+	char buffer[MAX];
 	mode_t mode;
 
 	if (argc != 3)
@@ -25,7 +25,7 @@ int main(int argc, char **argv)
 		dprintf(ER, "Error: Can't write to %s\n", argv[2]), exit(99);
 	do {
 
-		r = read(fdr, buffer, 1024);
+		r = read(fdr, buffer, MAX);
 		if (r == -1)
 			dprintf(ER, "Error: Can't read from file %s\n", argv[1]), exit(98);
 		if (r > 0)
