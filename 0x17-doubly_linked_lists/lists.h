@@ -20,6 +20,7 @@ typedef struct dlistint_s
 } dlistint_t;
 
 dlistint_t *temp;
+int sum_dlistint(dlistint_t *head);
 dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index);
 void free_dlistint(dlistint_t *head);
 dlistint_t *add_dnodeint_end(dlistint_t **head, const int n);
