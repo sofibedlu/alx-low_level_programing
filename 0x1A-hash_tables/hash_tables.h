@@ -1,3 +1,6 @@
+#ifndef HASH_TABLES_H
+#define HASH_TABLES_H
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -18,7 +21,7 @@ typedef struct hash_node_s
 } hash_node_t;
 
 /**
- * stuct hash_table_s - Hash table data structure
+ * struct hash_table_s - Hash table data structure
  *
  * @size: The size of the array
  * @array: an array of size @size
@@ -32,3 +35,5 @@ typedef struct hash_table_s
 } hash_table_t;
 
 hash_table_t *hash_table_create(unsigned long int size);
+
+#endif
