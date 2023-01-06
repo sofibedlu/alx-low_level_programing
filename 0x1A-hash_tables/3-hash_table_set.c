@@ -19,6 +19,8 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		return (0);
 	if (strcmp(key, "") == 0)
 		return (0);
+	if (strcmp(value, "") == 0)
+		value = "(null)";
 	new->key = strdup(key);
 	new->value = strdup(value);
 	new->next = NULL;
