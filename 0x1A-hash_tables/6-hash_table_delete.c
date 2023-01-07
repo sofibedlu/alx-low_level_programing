@@ -8,7 +8,8 @@ void hash_table_delete(hash_table_t *ht)
 {
 	unsigned long int i = 0;
 	hash_node_t *temp;
-	hash_node_t *tp;
+	hash_node_t *current;
+
 
 	while (i < ht->size)
 	{
@@ -20,12 +21,12 @@ void hash_table_delete(hash_table_t *ht)
 		temp = ht->array[i];
 		while (temp != NULL)
 		{
-			tp = temp->next;
+			current = temp->next;
 			free(temp->key);
 			free(temp->value);
-			temp = tp;
+			free(temp);
+			temp = current;
 		}
-		free(ht->array[i]);
 		i++;
 	}
 	free(ht->array);
