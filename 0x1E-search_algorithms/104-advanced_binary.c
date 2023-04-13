@@ -32,7 +32,7 @@ int binary(int *array, size_t l, size_t r, int value)
 		mid = (l + r) / 2;
 		if (array[mid] == value)
 		{
-			if (array[mid - 1] == value)
+			if (l != r)
 				return (binary(array, l, mid, value));
 			else
 				return (mid);
@@ -40,7 +40,7 @@ int binary(int *array, size_t l, size_t r, int value)
 		if (array[mid] < value)
 			return (binary(array, mid + 1, r, value));
 		else
-			return (binary(array, l, mid - 1, value));
+			return (binary(array, l, mid, value));
 	}
 	return (-1);
 }
