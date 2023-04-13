@@ -12,22 +12,23 @@ int binary(int *array, size_t l, size_t r, int value)
 {
 	size_t mid, i;
 
-	printf("Searching in array: ");
-	for (i = l; i <= r; i++)
-	{
-		printf("%d", array[i]);
-		if (i < r)
-			printf(", ");
-	}
-	printf("\n");
-	if (l == r)
+	if (l == r && value <= array[r])
 	{
 		if (array[l] == value)
 			return (l);
 		else
 			return (-1);
 	}
-	else
+        printf("Searching in array: ");
+        for (i = l; i <= r; i++)
+        {
+                printf("%d", array[i]);
+                if (i < r)
+                        printf(", ");
+        }
+        printf("\n");
+
+	if (l != r)
 	{
 		mid = (l + r) / 2;
 		if (array[mid] == value)
